@@ -1,0 +1,23 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Basic Express JS Blog WebApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Anthony-Abdiel/CS-312-MiniProject-1.git"
+  },
+  "author": "Anthony A Narvaez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anthony-Abdiel/CS-312-MiniProject-1/issues"
+  },
+  "homepage": "https://github.com/Anthony-Abdiel/CS-312-MiniProject-1#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "node": "^24.8.0"
+  }
+}
