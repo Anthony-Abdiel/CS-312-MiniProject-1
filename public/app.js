@@ -3,6 +3,8 @@
 const categories = [];
 const activeCats = new Set();
 
+currentPostId = null;
+
 
 
 //selecting DD-Menu and DD-Menu Divider for later use 
@@ -15,6 +17,10 @@ const cardRow = document.querySelector(".cardRow");
 //modal info for displaying posts
 const modal = document.getElementById("viewPost");
 const bsModal = new bootstrap.Modal(modal);
+
+//buttons on the already existing posts
+const delBtn = document.getElementById("delBtn");
+const editBtn = document.getElementById("editBtn");
 
 //form info for creating posts
 const submitPostBtn = document.getElementById("submitPostBtn");
@@ -60,6 +66,8 @@ cardRow.addEventListener('click', (event) => {
     
     postId = button.dataset.postId;
 
+    currentPostId = postId;
+
     fetch('/posts/'+postId).then(response=>response.json()).then( data => {
         openModal(data);
     })
@@ -75,7 +83,6 @@ cardRow.addEventListener('click', (event) => {
 submitPostBtn.addEventListener('click', (event) => {
     event.preventDefault();
 
-    console.log("Detected Submission!")
 
     const postTitle = titleInput.value;
     const postAuthor = authorInput.value;
@@ -105,6 +112,26 @@ submitPostBtn.addEventListener('click', (event) => {
 
 
 //------------------------------------------------------------------------------
+
+
+
+//EL for the delete button - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+delBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    
+    fetch("/posts/" + currentPostId, {
+        method: "DELETE",
+    }).then(response => {
+        //reloads the page to let EJS update the list
+        window.location.reload();
+    });
+
+});
+
+
+//------------------------------------------------------------------------------
+
 
 
 

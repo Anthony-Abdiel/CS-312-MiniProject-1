@@ -88,18 +88,28 @@ app.post("/post", async(req, res)=>{
 //DELETE
 app.delete("/posts/:id", (req,res) => {
     
-    postId = req.params.title;
+    const postId = Number(req.params.id);
 
+
+    console.log("DELETING ID: " + postId);
 
     //find the post
     const postIndex = blogPosts.findIndex(p => p.id === postId);
 
+    console.log("FOUND INDEX: " + postIndex);
+
     //removes specific post object
     if(postIndex !== -1) {
-        blogPosts.slice(postIndex, 1);
+        console.log("Sliced!");
+        blogPosts.splice(postIndex, 1);
     }
 
-})
+    for(let i = 0; i<blogPosts.length; i++) {
+        console.log(blogPosts[i].id);
+    }
+
+    res.redirect("/");
+});
 
 
 
