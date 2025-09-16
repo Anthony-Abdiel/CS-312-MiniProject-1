@@ -1,11 +1,11 @@
 //server file
-const express = require("express")
+const express = require("express");
 const path = require("path");
 
 
 //creating the express app
-const app = express()
-PORT = 3000
+const app = express();
+const PORT = 3000;
 
 //specifying file path:
 app.use(express.static(path.join(__dirname, 'public')));
